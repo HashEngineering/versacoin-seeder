@@ -418,14 +418,17 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"64.90.194.85", "167.71.4.123", "167.71.64.34", "188.166.165.99",
+static const string mainnet_seeds[] = {"seed1.versacoin.org", "seed2.versacoin.org",
                                        ""};
 static const string testnet_seeds[] = {""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8333), true);
+    db.Add(CService("64.90.194.85", 6888), true);
+    db.Add(CService("167.71.4.123", 6888), true);
+    db.Add(CService("167.71.64.34", 6888), true);
+    db.Add(CService("188.166.165.99", 6888), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
